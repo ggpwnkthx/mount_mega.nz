@@ -32,7 +32,7 @@ or
 
 ### System Service
 
-Copy mount-mega.example.service to /etc/systemd/system/ and rename as required.
+Copy `mount-mega.example.service` to `/etc/systemd/system/` and rename to fit your needs.
 
 Edit the service file to specify paths and user details.
 
