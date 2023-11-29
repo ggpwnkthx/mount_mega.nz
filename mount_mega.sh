@@ -18,7 +18,7 @@ check_command() {
 
 # Check for required commands
 check_command mega-login
-check_command mount.davfs2
+check_command mount.davfs
 
 # Function to display script usage instructions
 usage() {
