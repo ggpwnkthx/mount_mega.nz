@@ -1,0 +1,14 @@
+[Unit]
+Description=MEGA.nz WebDAV Mount Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/mega_mount.sh --credentials /path/to/credentials --remote //node/on/mega --local /mnt/path/to/mount
+ExecStop=/usr/local/bin/mega_mount.sh --unmount --local /mnt/path/to/mount
+Restart=on-failure
+User=yourusername
+Group=yourgroup
+
+[Install]
+WantedBy=multi-user.target
