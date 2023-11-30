@@ -24,12 +24,12 @@ cd /etc
 git clone https://github.com/ggpwnkthx/mount_mega.nz.git mega-webdav
 cd mega-webdav
 ln -s .service /etc/systemd/system/mega-webdav.service
-sudo systemctl enable mega-webdav.service
+systemctl enable mega-webdav.service
 ```
 
 ## Usage
 ```bash
-sudo systemctl start mega-webdav.service
+systemctl start mega-webdav.service
 ```
 
 # License
