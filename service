@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=oneshot
-EnvironmentFile=/etc/mega-webdav/.conf
+EnvironmentFile=/etc/mega-webdav/conf
 ExecStart=/bin/sh -c "mega-logout; mega-login $MEGA_USER $MEGA_PASS; mega-webdav --d --all; MEGA_URL=$(mega-webdav $MEGA_PATH --port=$MEGA_PORT | grep -o 'http://[^ ]*'); mount -t davfs $MEGA_URL $MOUNT_PATH"
 ExecStop=/bin/sh -c "umount $MOUNT_PATH; mega-webdav --d --all; mega-logout"
 RemainAfterExit=yes

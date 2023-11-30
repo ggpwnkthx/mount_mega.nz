@@ -9,7 +9,7 @@ The systemd service provided here is designed to automatically mount a WebDAV fo
 `DAVfs2`: A Linux tool for mounting WebDAV resources.
 
 ## Configuration
-Before using the service, configure your MEGA.nz credentials and mount settings in the `/etc/mega-mount/.conf` file.
+Before using the service, configure your MEGA.nz credentials and mount settings in the `/etc/mega-mount/conf` file.
 
 ### Parameters
 * `MEGA_USER`: Your MEGA.nz email address.
@@ -23,7 +23,7 @@ Before using the service, configure your MEGA.nz credentials and mount settings 
 cd /etc
 git clone https://github.com/ggpwnkthx/mount_mega.nz.git mega-webdav
 cd mega-webdav
-ln -s .service /etc/systemd/system/mega-webdav.service
+ln -s /etc/mega-webdav/service /etc/systemd/system/mega-webdav.service
 systemctl enable mega-webdav.service
 ```
 
