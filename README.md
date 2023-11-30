@@ -1,51 +1,36 @@
-# mount_mega.nz
+# MEGA.nz MEGAcmd WebDAV Systemd Service
+This repository contains a systemd service for mounting a MEGA.nz WebDAV folder on a Linux system using MEGAcmd.
 
-## Overview
+## Description
+The systemd service provided here is designed to automatically mount a WebDAV folder from MEGA.nz at system startup. It uses MEGAcmd, a command-line tool provided by MEGA.nz, to manage the login and setup of the WebDAV server.
 
-This project provides a set of tools to mount MEGA.nz WebDAV services on a Linux system. It includes a shell script `mount_mega.sh` for mounting and unmounting the service and a systemd service file `mount-mega.example.service` for managing the mount as a system service.
+## Requirements
+`MEGAcmd`: A command-line tool provided by MEGA.nz for accessing your MEGA.nz account.
+`DAVfs2`: A Linux tool for mounting WebDAV resources.
 
-## Prerequisites
+## Configuration
+Before using the service, configure your MEGA.nz credentials and mount settings in the `/etc/mega-mount/.conf` file.
 
-A MEGA.nz account.
-
-`MEGAcmd` and `davfs2` installed.
+### Parameters
+* `MEGA_USER`: Your MEGA.nz email address.
+* `MEGA_PASS`: Your MEGA.nz password.
+* `MEGA_PATH`: The MEGA.nz path you want to mount (e.g., //from/xyz@abc.com:Folder).
+* `MEGA_PORT`: The port for the WebDAV server (default is 4443).
+* `MOUNT_PATH`: The local path where you want to mount the MEGA.nz folder.
 
 ## Installation
-
-Clone this repository or download the scripts. Ensure the mount_mega.sh script is executable: `chmod +x mount_mega.sh`
+```bash
+cd /etc
+git clone https://github.com/ggpwnkthx/mount_mega.nz.git mega-webdav
+cd mega-webdav
+ln -s .service /etc/systemd/system/mega-webdav.service
+sudo systemctl enable mega-webdav.service
+```
 
 ## Usage
-
-### Manual Mounting
-
-#### Mount
-
-`./mega_mount.sh --credentials /path/to/credentials --remote //from/abc@xyz.com:Folder --local /mnt/path/to/mount`
-
-or
-
-`./mega_mount.sh --user username --pass password --remote //from/abc@xyz.com:Folder --local /mnt/path/to/mount`
-
-#### Unmount
-
-`./mount_mega.sh --unmount --local /mnt/path/to/mount`
-
-### System Service
-
-Copy `mount-mega.example.service` to `/etc/systemd/system/` and rename to fit your needs.
-
-Edit the service file to specify paths and user details.
-
-Enable the service: `systemctl enable [service-name]`
-
-Start the service: `systemctl start [service-name]`
-
-## Credentials
-
-Should be a plain text file with restricted permissions.
-
-Example: `username password`
+```bash
+sudo systemctl start mega-webdav.service
+```
 
 # License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+Refer to the LICENSE file for licensing information.
