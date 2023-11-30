@@ -23,7 +23,7 @@ Before using the service, configure your MEGA.nz credentials and mount settings 
 cd /etc
 git clone https://github.com/ggpwnkthx/mount_mega.nz.git mega-webdav
 cd mega-webdav
-ln -s /etc/mega-webdav/service /etc/systemd/system/mega-webdav.service
+ln -f /etc/mega-webdav/service /etc/systemd/system/mega-webdav.service
 systemctl enable mega-webdav.service
 ```
 
